@@ -16,3 +16,4 @@ function validarChamado(titulo: string): boolean {
 }
 
 export default validarChamado;
+

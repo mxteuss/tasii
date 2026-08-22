@@ -17,19 +17,22 @@ describe('Suíte de Testes - Validador de Chamados (Service Desk)', () => {
 
     test('Deve lançar erro se o título for composto apenas por espaços em branco', () => {
         expect(() => {
-            validarChamado("   ");
+            validarChamado("  ");
         }).toThrow("O título do chamado não pode ser vazio.");
     });
 
     test('Deve lançar erro se o título tiver menos que 5 caracteres', () => {
         expect(() => {
-            validarChamado("12345");
-        }).toThrow("O título do chamado não pode ter menos que 5 caracteres.")
+            validarChamado("1234");
+        }).toThrow("O título deve ter no mínimo 5 caracteres")
     })
 
        test('Deve lançar erro se o título tiver mais que 100 caracteres', () => {
+        const titulo = "a".repeat(102);
+        console.log(titulo.length)
         expect(() => {
-            validarChamado("123456789");
-        }).toThrow("O título do chamado não pode ter mais que 100 caracteres.")
+            validarChamado(titulo);
+        }).toThrow("O titulo deve posssuir no máximo 100 caracteres")
     })
 });
+
